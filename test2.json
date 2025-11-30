@@ -1,6 +1,6 @@
 {
-  "name": "John",
-  "age": 30,
-  "isStudent": false,
+  "name": "Gbenga",
+  "age": 10,
+  "isStudent": true,
   "car": 10
 }
