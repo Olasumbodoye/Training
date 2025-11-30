@@ -19,4 +19,4 @@
               objectType: cert
             - key: tls.key
               objectName: <your-certificate-name>
-              objectType: cert22222
+              objectType: certanother
