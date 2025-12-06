@@ -24,7 +24,7 @@ spec:
     - secretName: app-secrets
       type: Opaque
       data:
-        - key: APP_SECRET
+        - key: APP_SECRETS
           objectName: <app-secret-name>
         - key: DB_CONNECTION_STRING
           objectName: <db-connection-string>

@@ -1,1 +1,1 @@
-print ("Class resumes on Sunday 5pm, be there")
+print ("Class resumes on Sunday 5pm, be there. Have fun.")
