@@ -1,1 +1,1 @@
-adding py file
+print ("Class resumes on Sunday 5pm, be there")
