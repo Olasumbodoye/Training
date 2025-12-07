@@ -2,5 +2,6 @@
   "name": "Olasunmbo",
   "age": 15,
   "isStudent": false,
-  "car": 8
+  "car": 8,
+  "branch": "test_branch"
 }
