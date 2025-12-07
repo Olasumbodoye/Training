@@ -10,7 +10,7 @@
         userAssignedIdentityID: "<client-id-of-managed-identity>" # Required if useVMManagedIdentity is "true"
         keyvaultName: "<your-keyvault-name>"
         tenantId: "<your-azure-tenant-id>"
-        environment: main_branch
+        environment: the main_branch
       secretObjects:
         - secretName: my-certificate-secret # Name of the Kubernetes Secret to be created
           type: kubernetes.io/tls

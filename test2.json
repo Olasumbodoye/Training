@@ -1,7 +1,7 @@
 {
-  "name": "Olasunmbo",
-  "age": 15,
-  "isStudent": false,
-  "car": 8,
-  "branch": "main_branch"
+  "name": "Ayotunde",
+  "age": 32,
+  "isStudent": true,
+  "car": 3,
+  "branch": "main"
 }
