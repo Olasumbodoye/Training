@@ -19,5 +19,5 @@
               objectName: <your-certificate-name> # Name of the certificate in Key Vault
               objectType: cert
             - key: tls.key
-              objectName: <your-certificate-name>
-              objectType: certanother
+              objectName: Azure another_main
+              objectType: certificate another_main
