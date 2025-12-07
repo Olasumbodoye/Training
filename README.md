@@ -1,4 +1,4 @@
 # training
 This repository is for training purpose
 created new branch
-This line was added from the main
+Added a line from another_main branch
