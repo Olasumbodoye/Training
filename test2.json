@@ -1,7 +1,7 @@
 {
-  "name": "Ayotunde",
-  "age": 32,
-  "isStudent": true,
-  "car": 3,
-  "branch": "main"
+  "name": "Oluwagbenga",
+  "age": 33,
+  "isStudent": false,
+  "car": 5,
+  "branch": "test_branch"
 }
