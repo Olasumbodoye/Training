@@ -1,0 +1,42 @@
+name: Download ZIP
+
+on:
+  workflow_dispatch
+
+env:
+  APP_NAME: training_app
+  APP_VERSION: "1.0.0"
+  FILE: ./test.yaml
+  FILE2: ./test2.json
+  FILE3: ./test3.py
+
+jobs:
+  download:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Verify files exist
+        run: |
+          for f in "$FILE" "$FILE2" "$FILE3"; do
+            if [ ! -f "$f" ]; then
+              echo "Missing file: $f"
+              exit 1
+            fi
+          done
+
+      - name: Create ZIP file
+        run: |
+          zip ${APP_NAME}-${APP_VERSION}.zip "$FILE" "$FILE2" "$FILE3"
+
+      - name: Create GitHub Release and upload ZIP
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ env.APP_VERSION }}
+          name: Release v${{ env.APP_VERSION }}
+          files: |
+            ${APP_NAME}-${APP_VERSION}.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
