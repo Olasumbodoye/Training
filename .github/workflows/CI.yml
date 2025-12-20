@@ -61,10 +61,10 @@ jobs:
 
     - name: create ZIP file
       run: |
-        zip -r build-${{ github.run_number }}.zip dist/
+        zip myfiles -${{ github.run_number}}.zip $file $file2 $file3
       
     - name: upload ZIP as artifact
       uses: actions/upload-artifact@v3
       with:
         name: zipped-build
-        path: build-${{ github.run_number }}.zip
+        path: myfiles-${{ github.run_number }}.zip
