@@ -57,8 +57,13 @@ jobs:
 
       - name: Read file contents
         run: |
+          echo "Contents of $FILE1:"
           cat "$FILE"
+
+          echo "Contents of $FILE2:"
           cat "$FILE2"
+
+          echo "Contents of $FILE3:"
           cat "$FILE3"
 
       - name: Create ZIP file
