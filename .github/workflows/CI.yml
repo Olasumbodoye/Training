@@ -33,39 +33,40 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      - name: List environment variables
+      - name: Show files in workspace
+        run: |
+          pwd
+          ls -la
+
+      - name: Verify files exist
+        run: |
+          for f in "$FILE" "$FILE2" "$FILE3"; do
+            [ -f "$f" ] && echo "✅ Found $f" || (echo "❌ Missing $f" && exit 1)
+          done
+
+      - name: Print environment variables
         run: |
           echo "Sub_name: $SUB_NAME"
           echo "Tenant_name: $TENANT_NAME"
-          echo "Resource_name: $RESOURCE_NAME"
-          echo "Location: $LOCATION"
-          echo "Environment: $ENVIRONMENT"
           echo "Project_name: $PROJECT_NAME"
-          echo "Dev_sub_name: $DEV_SUB_NAME"
-          echo "Dev_tenant_name: $DEV_TENANT_NAME"
           echo "Build_version: $BUILD_VERSION"
-          echo "Artifact_name: $ARTIFACT_NAME"
-          echo "Deploy_region: $DEPLOY_REGION"
-          echo "Vm_size: $VM_SIZE"
-          echo "Os_type: $OS_TYPE"
-          echo "Commit_author: $COMMIT_AUTHOR"
           echo "Commit_sha: $COMMIT_SHA"
           echo "Branch_name: $BRANCH_NAME"
 
-      - name: Read the contents of my files
+      - name: Read file contents
         run: |
-          cat $FILE
-          cat $FILE2
-          cat $FILE3
+          cat "$FILE"
+          cat "$FILE2"
+          cat "$FILE3"
 
       - name: Create ZIP file
         run: |
-          zip myfiles-${{ github.run_number }}.zip $FILE $FILE2 $FILE3
+          zip myfiles-${{ github.run_number }}.zip "$FILE" "$FILE2" "$FILE3"
 
       - name: Upload ZIP as artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: zipped-build
           path: myfiles-${{ github.run_number }}.zip
