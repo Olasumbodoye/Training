@@ -2,7 +2,7 @@ name: CI
 
 on:
   push:
-    branches: [ main]
+    branches: [ main ]
   pull_request:
     branches: [ main ]
 
@@ -32,39 +32,40 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-    - name: list the variable
-      run: |
-        echo "Sub_name: " ${{ env.SUB_NAME }}
-        echo "Tenant_name : " ${{ env.TENANT_NAME }}
-        echo "Resource_name : " ${{ env.RESOURCE_NAME }}
-        echo "Location : " ${{ env.LOCATION }}
-        echo "Environment : " ${{ env.ENVIRONMENT }}
-        echo "Project_name : " ${{ env.PROJECT_NAME }}
-        echo "Dev_sub_name : " ${{ env.DEV_SUB_NAME }}
-        echo "Dev_tenant_name : " ${{ env.DEV_TENANT_NAME }}
-        echo "Build_version : " ${{ env.BUILD_VERSION }}
-        echo "Artifact_name : " ${{ env.ARTIFACT_NAME }}
-        echo "Deploy_region : " ${{ env.DEPLOY_REGION }}
-        echo "Vm_size : " ${{ env.VM_SIZE }}
-        echo "Os_type : " ${{ env.OS_TYPE }}
-        echo "Commit_author : " ${{ env.COMMIT_AUTHOR }}
-        echo "Commit_sha : " ${{ env.COMMIT_SHA }}
-        echo "Branch_name : " ${{ env.BRANCH_NAME }}
+      - name: List environment variables
+        run: |
+          echo "Sub_name: $SUB_NAME"
+          echo "Tenant_name: $TENANT_NAME"
+          echo "Resource_name: $RESOURCE_NAME"
+          echo "Location: $LOCATION"
+          echo "Environment: $ENVIRONMENT"
+          echo "Project_name: $PROJECT_NAME"
+          echo "Dev_sub_name: $DEV_SUB_NAME"
+          echo "Dev_tenant_name: $DEV_TENANT_NAME"
+          echo "Build_version: $BUILD_VERSION"
+          echo "Artifact_name: $ARTIFACT_NAME"
+          echo "Deploy_region: $DEPLOY_REGION"
+          echo "Vm_size: $VM_SIZE"
+          echo "Os_type: $OS_TYPE"
+          echo "Commit_author: $COMMIT_AUTHOR"
+          echo "Commit_sha: $COMMIT_SHA"
+          echo "Branch_name: $BRANCH_NAME"
 
-    - name: read the contents of my files
-      run: |
-        cat $file
-        cat $file2
-        cat $file3
+      - name: Read the contents of my files
+        run: |
+          cat $FILE
+          cat $FILE2
+          cat $FILE3
 
-    - name: create ZIP file
-      run: |
-        zip myfiles -${{ github.run_number}}.zip $file $file2 $file3
-      
-    - name: upload ZIP as artifact
-      uses: actions/upload-artifact@v3
-      with:
-        name: zipped-build
-        path: myfiles-${{ github.run_number }}.zip
+      - name: Create ZIP file
+        run: |
+          zip myfiles-${{ github.run_number }}.zip $FILE $FILE2 $FILE3
+
+      - name: Upload ZIP as artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: zipped-build
+          path: myfiles-${{ github.run_number }}.zip
