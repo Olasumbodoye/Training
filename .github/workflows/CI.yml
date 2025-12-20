@@ -92,3 +92,19 @@ jobs:
       - name: New job
         run: |
           echo "This is a new job called Deployment"
+
+  Download:
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+      - name: Download ZIP artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: zipped-build
+          path: downloaded-artifact
+
+      - name: Verify downloaded ZIP
+        run: |
+          echo "This is a new job called Download"
+          ls -la downloaded-artifact
