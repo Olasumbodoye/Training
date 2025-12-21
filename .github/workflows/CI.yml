@@ -93,11 +93,6 @@ jobs:
         run: |
           echo "This is a new job called Deployment"
 
-  Download:
-    runs-on: ubuntu-latest
-    needs: build
-
-    steps:
       - name: Download ZIP artifact
         uses: actions/download-artifact@v4
         with:
